@@ -15,4 +15,22 @@
       <input type="text" name="new-task" placeholder="Add new item..."/>
     </div>
   </body>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script>
+   add_tasks();
+
+   function add_task(){
+     $('.add-new-task').submit(function() {
+       var new_task = $('.add-new-task input[name=new-task]').val();
+
+       if (new_task != '') {
+         $.post('Includes/add-task.php', { tasks: new_task}, function(data) {
+           $(('add-new-task input[name=new-task]').val();
+              $(data).appendTo('task-list ul').hide().fadeIn();
+         });
+       }
+       return false;
+     });
+   }
+  </script>
 </html>
