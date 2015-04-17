@@ -17,7 +17,7 @@
   </body>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script>
-   add_tasks(); //calling the add task function
+   add_task(); //calling the add task function
 
    function add_task(){
      $('.add-new-task').submit(function() {
