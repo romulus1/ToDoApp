@@ -8,7 +8,22 @@
     <div class="wrap">
       <div class="task-list">
         <ul>
-          <?php require("Includes/connect.php"); ?>
+          <?php require("Includes/connect.php");
+            $mysqli = new mysqli('localhost', 'root', 'root', 'tasks');
+            $query = "SELECT * FROM tasks ORDER BY  date ASC, time ASC";
+            if ($result = $mysqli->query($query)) {
+              $numrows = $result->nun_rows;
+                while($row = $result->fetch_assoc()) {
+                  $task_id = $row['id'];
+                  $task_here = $row['task'];
+
+                  echo "<li>
+                  <span>'.$task_name'
+                  ";
+                }
+            }
+
+          ?>
         </ul>
     </div>
     <form class="add-new-task" autocomplete="off">
@@ -36,7 +51,7 @@
    $('.delete-button').click(function()) {
      var current_element = $(this);
      var task_id = $(this).after['id'];
-     
+
      $.post('Includes/delete-task.php'. {id: task_id}, functino(){
      current_element.parent(). fadeOut("fast", function(){
        $(this).remove();
